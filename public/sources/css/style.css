@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Variables CSS pour un thème sombre */
+:root {
+  --bg-color: #1a202c;
+  --nav-color: #2d3748;
+  --text-color: #e2e8f0;
+  --link-hover-color: #4a5568;
+  --accent-color: #4c51bf;
+}
+
+html,
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles de base */
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  max-width: clamp(40rem, 60dvw, 80dvw);
+}
+
+.main-head {
+  background-color: var(--nav-color);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* Par défaut en colonne pour mobile */
+  gap: 1.5rem;
+
+  /* Masqué par défaut sur mobile */
+  display: none;
+}
+
+.main-menu.is-open {
+  display: flex;
+}
+
+.main-menu-links {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.main-menu-links:hover,
+.main-menu-links:focus {
+  color: var(--link-hover-color);
+}
+
+/* Style du bouton "hamburger" pour mobile */
+.menu-toggle {
+  display: block;
+  /* Visible par défaut sur mobile */
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  outline: none;
+}
+
+.main-content {
+  max-width: 650px;
+  margin-inline: auto;
+  padding: .4rem .8rem;
+}
+
+/* Styles pour les écrans plus grands (tablettes et desktops) */
+@media (min-width: 768px) {
+  .main-menu {
+    display: flex !important;
+    /* Force l'affichage du menu */
+    flex-direction: row;
+    /* En ligne sur les grands écrans */
+    gap: 2rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    /* Masque le bouton hamburger */
+  }
+}

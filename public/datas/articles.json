@@ -1,0 +1,38 @@
+[
+    {
+        "titre": "L'IA et la créativité",
+        "date_publication": "2024-05-20",
+        "auteur": "Léa Dubois",
+        "contenu": "Exploration du rôle de l'intelligence artificielle dans les processus créatifs."
+    },
+    {
+        "titre": "Le futur de l'énergie",
+        "date_publication": "2024-05-18",
+        "auteur": "Marc Dupont",
+        "contenu": "Analyse des innovations technologiques pour une transition énergétique durable."
+    },
+    {
+        "titre": "Minimalisme numérique",
+        "date_publication": "2024-05-15",
+        "auteur": "Sophie Martin",
+        "contenu": "Comment déconnecter pour retrouver sa concentration."
+    },
+    {
+        "titre": "La cuisine moléculaire",
+        "date_publication": "2024-05-12",
+        "auteur": "Pierre Lecoeur",
+        "contenu": "Une introduction aux techniques culinaires modernes."
+    },
+    {
+        "titre": "Les villes de demain",
+        "date_publication": "2024-05-10",
+        "auteur": "Émilie Lambert",
+        "contenu": "Étude sur l'urbanisme et l'innovation pour les métropoles intelligentes."
+    },
+    {
+        "titre": "Le voyage dans l'espace",
+        "date_publication": "2024-05-08",
+        "auteur": "Jules Verne",
+        "contenu": "Un aperçu des progrès de l'exploration spatiale privée."
+    }
+]

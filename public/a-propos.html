@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    À propos
+  </title>
+  <link rel="shortcut icon" href="./assets/images/logo/logo-comete-webdevoo-green-2023-256x256.png" type="image/x-icon">
+  <link rel="stylesheet" href="./sources/css/style.css">
+</head>
+
+<body>
+  <header class="main-head">
+    <nav class="main-nav">
+      <menu class="main-menu">
+        <li class="main-menu-items">
+          <a href="/" class="main-menu-links">
+            Accueil
+          </a>
+        </li>
+        <li class="main-menu-items">
+          <a href="/a-propos" class="main-menu-links">
+            À propos
+          </a>
+        </li>
+      </menu>
+    </nav>
+  </header>
+  <main class="main-content">
+    <h1>
+      À propos
+    </h1>
+    <div id="profileContainer">
+      <p>
+        Chargement des données en cours...
+      </p>
+      </pdi>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const profileContainer = document.querySelector("#profileContainer");
+
+      const fetchProfile = async () => {
+        try {
+          // On requête l'api/profile pour récupérer les données.
+          const response = await fetch('/api/profile');
+          const data = await response.json();
+
+          // On nettoie l'ancien contenu.
+          profileContainer.innerHTML = '';
+
+          // On construit les éléments en javascript, puis on les hydrate avec nos données.
+          const nom = document.createElement('p');
+          nom.textContent = `Nom : ${data.nom}`;
+          profileContainer.appendChild(nom);
+
+          const entreprise = document.createElement('p');
+          entreprise.textContent = `Entreprise : ${data.entreprise}`;
+          profileContainer.appendChild(entreprise);
+
+          const description = document.createElement('p');
+          description.textContent = `Description : ${data.description}`;
+          profileContainer.appendChild(description);
+
+          const anneeDev = document.createElement('p');
+          anneeDev.textContent = `Développeur depuis : ${data.annee_debut_entreprise}`;
+          profileContainer.appendChild(anneeDev);
+
+          const anneeForm = document.createElement('p');
+          anneeForm.textContent = `Organisme de formation depuis : ${data.annee_debut_organisme_formation}`;
+          profileContainer.appendChild(anneeForm);
+
+        } catch (error) {
+          profileContainer.innerHTML = '<p>Impossible de charger les informations du profil.</p>';
+          console.error('Erreur lors du chargement du profil :', error);
+        }
+      };
+
+      // Appelle la fonction au chargement de la page
+      fetchProfile();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Contenu introuvable
+  </title>
+  <link rel="stylesheet" href="./sources/css/style.css">
+  <style>
+    body {
+            font-family: system-ui, sans-serif;
+            background-color: #1a202c;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 32rem;
+            width: 100%;
+        }
+
+        .title-404 {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #4a5568;
+            margin-bottom: 1rem;
+            animation: pulse-animation 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+        
+        @keyframes pulse-animation {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-size: 1.125rem;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+        }
+
+        .home-link {
+            display: inline-block;
+            background-color: #4c51bf;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition-property: background-color, transform, box-shadow;
+            transition-duration: 300ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .home-link:hover {
+            background-color: #434190;
+            transform: scale(1.05);
+        }
+  </style>
+</head>
+<body>
+  <header class="main-head">
+    <nav class="main-nav">
+      <menu class="main-menu">
+        <li class="main-menu-items">
+          <a href="/" class="main-menu-links">
+            Accueil
+          </a>
+        </li>
+        <li class="main-menu-items">
+          <a href="/a-propos" class="main-menu-links">
+            À propos
+          </a>
+        </li>
+      </menu>
+    </nav>
+  </header>
+  <main class="container">
+    <h1 class="title-404">
+      404
+    </h1>
+    <h2 class="subtitle">
+      Oups ! Le contenu est introuvable !
+    </h2>
+    <p class="message">
+      Il semblerait que vous ayez suivi un lien brisé ou que la page ait été déplacée. Ne vous inquiétez pas, cela arrive à tout le monde.
+    </p>
+    <a href="/" class="home-link">
+      Retourner à l'accueil
+    </a>
+  </main>
+</body>
+</html>
