@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rechercher un profil</title>
+  <link rel="shortcut icon" href="./assets/images/logo/logo-comete-webdevoo-green-2023-256x256.png" type="image/x-icon">
+  <link rel="stylesheet" href="./sources/css/style.css">
+</head>
+
+<body>
+  <header class="main-head">
+    <nav class="main-nav">
+      <menu class="main-menu">
+        <li class="main-menu-items">
+          <a href="/" class="main-menu-links">
+            Accueil
+          </a>
+        </li>
+        <li class="main-menu-items">
+          <a href="/a-propos" class="main-menu-links">
+            À propos
+          </a>
+        </li>
+      </menu>
+    </nav>
+  </header>
+  <main class="main-content">
+    <h1>
+      Rechercher un profil par email
+    </h1>
+
+    <section>
+      <form action="/api/profile" method="POST" id="profileForm">
+        <label for="email">
+          Email associé au profil
+        </label>
+        <input type="email" placeholder="mail@test.fr" value="webdevoo.pro@gmail.com" name="email" id="email" required>
+        <button type="submit">
+          Rechercher
+        </button>
+      </form>
+
+      <article id="profileContainer"></article>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const profileForm = document.querySelector("#profileForm");
+      const socket = io(); // On se connecte au serveur Socket.io
+
+      const showProfile = (data) => {
+        data = data.profile;
+        const profileContainer = document.querySelector("#profileContainer");
+        profileContainer.innerHTML = "";
+
+        const name = document.createElement("h2");
+        name.textContent = data.name;
+        profileContainer.appendChild(name);
+
+        const business = document.createElement("p");
+        business.textContent = `Entreprise : ${data.entreprise}.`
+        profileContainer.appendChild(business);
+
+        const email = document.createElement("p");
+        email.textContent = `Email : ${data.email}.`
+        profileContainer.appendChild(email);
+
+        const description = document.createElement("p");
+        description.textContent = `Description : ${data.description}.`
+        profileContainer.appendChild(description);
+
+        const businessStartDate = document.createElement("p");
+        businessStartDate.textContent = `Date de lancement de l'entreprise : ${data.annee_debut_entreprise}.`
+        profileContainer.appendChild(businessStartDate);
+
+        const trainingOrganizationStartDate = document.createElement("p");
+        trainingOrganizationStartDate.textContent = `Date de lancement de l'organisme de formation : ${data.annee_debut_organisme_formation}.`
+        profileContainer.appendChild(trainingOrganizationStartDate);
+      }
+
+      // Écouter les retours du serveur
+      socket.on('search profile', (data) => {
+        showProfile(data);
+      });
+
+      const searchProfile = async (email) => {
+        const search = email.trim().toLowerCase();
+        // const response = await fetch("/api/profile", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json"
+        //   },
+        //   body: JSON.stringify({ email: search })
+        // });
+        // const data = await response.json();
+        socket.emit('search profile', search);
+        // showProfile(data.profile);
+      };
+
+      profileForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const emailInput = document.querySelector("#email");
+        searchProfile(emailInput.value);
+        profileForm.reset();
+        e.stopPropagation();
+      });
+    });
+  </script>
+</body>
+
+</html>
