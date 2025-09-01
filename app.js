@@ -122,8 +122,10 @@ app.use((req, res) => {
 io.on("connection", (socket) => {
   console.log("Un utilisateur s'est connecté.");
 
-  socket.on("search profile", async (email) => {
-    email = email.trim().toLowerCase();
+  socket.on("search profile", async (formData) => {
+    // Si on utilise un formData sur le fichier HTML, il faut utiliser : 
+    // const email = formData.email.trim().toLowerCase();
+    const email = formData.trim().toLowerCase();
     let result = {
       profile: {},
       message: "Pas de profil correspondant."

@@ -23,6 +23,11 @@
             À propos
           </a>
         </li>
+        <li class="main-menu-items">
+          <a href="/profile" class="main-menu-links">
+            Rechercher un profil
+          </a>
+        </li>
       </menu>
     </nav>
   </header>
@@ -89,6 +94,12 @@
 
       const searchProfile = async (email) => {
         const search = email.trim().toLowerCase();
+        // On peut également utiliser la classe FormData pour convertir les données du formulaire au bon format pour le serveur socket.io
+        // const formData = new FormData(profileForm);
+        // On convertit l'objet FormData en un objet JSON simple.
+        // Object.fromEntries est une méthode qui permet de récupérer toutes les entrées du formulaire, sous forme clé/valeur pour la transformer en un objet.
+        // const formDataObject = Object.fromEntries(formData.entries());
+
         // const response = await fetch("/api/profile", {
         //   method: "POST",
         //   headers: {
@@ -97,6 +108,8 @@
         //   body: JSON.stringify({ email: search })
         // });
         // const data = await response.json();
+
+        // Si on utilise le formData, il faut remplacer search par formData, ci-dessous.
         socket.emit('search profile', search);
         // showProfile(data.profile);
       };
